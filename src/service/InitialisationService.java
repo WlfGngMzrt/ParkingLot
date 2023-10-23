@@ -22,7 +22,7 @@ public class InitialisationService {
         this.parkingLotRepository = new ParkingLotRepository();
     }
 
-    public void initialise()
+    public ParkingLot initialise()
     {
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setId(1);
@@ -83,5 +83,6 @@ public class InitialisationService {
             parkingFloors.add(parkingFloor);
         }
         parkingLot.setParkingFloors(parkingFloors);
+        return parkingLot;
     }
 }
