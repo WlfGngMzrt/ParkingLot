@@ -1,0 +1,6 @@
+package models;
+
+public enum Status {
+    ACTIVE, INACTIVE, SUCCESSFUL, PENDING, FAILURE,
+    NOT_ACTIVE, AVAILABLE, UNDER_MAINTENANCE
+}
