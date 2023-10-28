@@ -8,7 +8,7 @@ import service.TicketService;
 public class TicketController {
     private TicketService TicketService;
     public TicketController(TicketService ticketService) {
-        TicketService = ticketService;
+        this.TicketService = ticketService;
     }
 
     public IssueTicketResponseDTO getTicket(IssueTicketRequestDTO issueTicketRequestDTO)
@@ -23,7 +23,7 @@ public class TicketController {
             Ticket ticket = TicketService.getTicket(issueTicketRequestDTO.getVehicleType()
                     ,issueTicketRequestDTO.getVehicleNumber(),
                     issueTicketRequestDTO.getVehicleMake(),
-                    issueTicketRequestDTO.getVehicleMake(),
+                    issueTicketRequestDTO.getVehicleColor(),
                     issueTicketRequestDTO.getGateId());
             issueTicketResponseDTO.setResponseStatus(ResponseStatus.SUCCESS);
             issueTicketResponseDTO.setTicket(ticket);
