@@ -38,6 +38,7 @@ public class InitialisationService {
         entryGate.setGateType(GateType.ENTRY_GATE);
         entryGate.setFloorNumber(0);
         entryGate.setStatus(Status.ACTIVE);
+        entryGate.setParkingLotId(1);
 
         Gate exitGate = new Gate();
         exitGate.setId(2);
@@ -46,7 +47,7 @@ public class InitialisationService {
         exitGate.setGateType(GateType.EXIT_GATE);
         exitGate.setFloorNumber(0);
         exitGate.setStatus(Status.ACTIVE);
-
+        exitGate.setParkingLotId(1);
 
         parkingLot.setGates(List.of(entryGate,exitGate));
         gateRepository.put(entryGate);
@@ -54,9 +55,10 @@ public class InitialisationService {
 
 
         List<ParkingFloor> parkingFloors = new ArrayList<>();
-        List<ParkingSpot> parkingSpots = new ArrayList<>();
+
         for(int i = 1; i <= 10; i++)
         {
+            List<ParkingSpot> parkingSpots = new ArrayList<>();
             ParkingFloor parkingFloor = new ParkingFloor();
             parkingFloor.setId(100+i);
             parkingFloor.setStatus(Status.ACTIVE);
