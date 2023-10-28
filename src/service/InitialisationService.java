@@ -15,14 +15,14 @@ public class InitialisationService {
     private ParkingSpotRepository parkingSpotRepository;
     private ParkingLotRepository parkingLotRepository;
 
-    public InitialisationService() {
-        this.gateRepository = new GateRepository();
-        this.parkingFloorRepository = new ParkingFloorRepository();
-        this.parkingSpotRepository = new ParkingSpotRepository();
-        this.parkingLotRepository = new ParkingLotRepository();
+    public InitialisationService(GateRepository gateRepository, ParkingFloorRepository parkingFloorRepository, ParkingSpotRepository parkingSpotRepository, ParkingLotRepository parkingLotRepository) {
+        this.gateRepository = gateRepository;
+        this.parkingFloorRepository = parkingFloorRepository;
+        this.parkingSpotRepository = parkingSpotRepository;
+        this.parkingLotRepository = parkingLotRepository;
     }
 
-    public ParkingLot initialise()
+    public ParkingLot  initialise()
     {
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setId(1);
@@ -53,7 +53,6 @@ public class InitialisationService {
         gateRepository.put(entryGate);
         gateRepository.put(exitGate);
 
-
         List<ParkingFloor> parkingFloors = new ArrayList<>();
 
         for(int i = 1; i <= 10; i++)
@@ -76,7 +75,7 @@ public class InitialisationService {
                 {
                     parkingSpot.setVehicleTypeSupported(VehicleType.FOUR_WHEELER);
                 }
-                parkingSpot.setStatus(Status.ACTIVE);
+                parkingSpot.setStatus(Status.AVAILABLE);
                 parkingSpots.add(parkingSpot);
                 parkingSpotRepository.put(parkingSpot);
             }
@@ -85,6 +84,7 @@ public class InitialisationService {
             parkingFloors.add(parkingFloor);
         }
         parkingLot.setParkingFloors(parkingFloors);
+        parkingLotRepository.put(parkingLot);
         return parkingLot;
     }
 }

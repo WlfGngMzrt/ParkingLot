@@ -6,9 +6,7 @@ import exception.InvalidRequestDataException;
 import models.Ticket;
 import service.TicketService;
 public class TicketController {
-
-        private TicketService TicketService;
-
+    private TicketService TicketService;
     public TicketController(TicketService ticketService) {
         TicketService = ticketService;
     }
@@ -16,19 +14,19 @@ public class TicketController {
     public IssueTicketResponseDTO getTicket(IssueTicketRequestDTO issueTicketRequestDTO)
     {
         IssueTicketResponseDTO issueTicketResponseDTO = new IssueTicketResponseDTO();
-        Ticket ticket;
         try {
             if (issueTicketRequestDTO.getGateId() == 0 ||
                     issueTicketRequestDTO.getVehicleType() == null ||
                     issueTicketRequestDTO.getVehicleNumber() == null) {
                 throw new InvalidRequestDataException("Ticket Generation request data is invalid");
             }
-
-            ticket = TicketService.getTicket(issueTicketRequestDTO.getVehicleType()
+            Ticket ticket = TicketService.getTicket(issueTicketRequestDTO.getVehicleType()
                     ,issueTicketRequestDTO.getVehicleNumber(),
                     issueTicketRequestDTO.getVehicleMake(),
                     issueTicketRequestDTO.getVehicleMake(),
                     issueTicketRequestDTO.getGateId());
+            issueTicketResponseDTO.setResponseStatus(ResponseStatus.SUCCESS);
+            issueTicketResponseDTO.setTicket(ticket);
 
         }
         catch(Exception e)

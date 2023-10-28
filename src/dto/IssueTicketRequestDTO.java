@@ -6,9 +6,19 @@ public class IssueTicketRequestDTO {
     private VehicleType vehicleType;
     private String vehicleColor;
     private String vehicleNumber;
-
     private String vehicleMake;
     private int gateId;
+
+    public IssueTicketRequestDTO(VehicleType vehicleType, String vehicleColor, String vehicleNumber, String vehicleMake, int gateId) {
+        this.vehicleType = vehicleType;
+        this.vehicleColor = vehicleColor;
+        this.vehicleNumber = vehicleNumber;
+        this.vehicleMake = vehicleMake;
+        this.gateId = gateId;
+    }
+
+    public IssueTicketRequestDTO() {
+    }
 
     public VehicleType getVehicleType() {
         return vehicleType;

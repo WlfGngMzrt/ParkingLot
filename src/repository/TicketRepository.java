@@ -14,18 +14,18 @@ public class TicketRepository {
         this.TicketMap = new HashMap<>();
     }
 
-    public Ticket get(int parkingLotNumber)
+    public Ticket get(int ticketId)
     {
-        Ticket Ticket = TicketMap.get(parkingLotNumber);
+        Ticket Ticket = TicketMap.get(ticketId);
         if (Ticket == null)
         {
-            throw new TicketNotFoundException("Parking Floor not found" + Ticket.getId());
+            throw new TicketNotFoundException("Ticket not found" + ticketId);
         }
         return Ticket;
     }
     public void put(Ticket Ticket)
     {
         TicketMap.put(Ticket.getId(),Ticket);
-        System.out.println("Parking lot has been added successfully");
+        System.out.println("Ticket has been added successfully");
     }
 }
